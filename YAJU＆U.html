@@ -1,1 +1,15 @@
+<div id="container"></div>
 
+<script>
+  const container = document.getElementById('container');
+  const imageSrc = 'yajuu.jpg'; // クローンしたい画像
+
+  // 50回繰り返して画像を追加
+  for (let i = 0; i < 1000; i++) {
+    const img = document.createElement('img');
+    img.src = imageSrc;
+    img.style.width = '100px'; // サイズ調整
+    img.style.margin = '5px';
+    container.appendChild(img);
+  }
+</script>
