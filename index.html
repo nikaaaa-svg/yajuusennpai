@@ -1,14 +1,43 @@
-<div id="container"></div>
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>野獣先輩</h1>
+  <p style="color: pink;">野獣先輩がいっぱいのサイト
+    </p>
+
+  <div id="container"></div>
 
 <script>
-  const container = document.getElementById('container');
- const imageSrc = './yajuu.jpg';
+const container = document.getElementById('container');
+const imageSrc = './yajuu.jpg';
 
-  for (let i = 0; i < 1000; i++) {
+const MAX_IMAGES = 300; // 最大表示数（ここ調整）
+
+// 画像追加
+function addImages(count = 50) {
+  for (let i = 0; i < count; i++) {
     const img = document.createElement('img');
     img.src = imageSrc;
-    img.style.width = '100px'; // サイズ調整
+    img.style.width = '100px';
     img.style.margin = '5px';
     container.appendChild(img);
   }
+
+  // 古い画像を削除
+  while (container.children.length > MAX_IMAGES) {
+    container.removeChild(container.firstChild);
+  }
+}
+
+// 初期表示
+addImages(100);
+
+// スクロールで追加
+window.addEventListener('scroll', () => {
+  if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) {
+    addImages(50);
+  }
+});
 </script>
+</body>
+</html>
